@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Ebrima';
+  src: url('/static/fonts/Ebrima Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Ebrima';
+  src: url('/static/fonts/Ebrima Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Digital Serial';
+  src: url('/static/fonts/Digital-Serial-Regular.ttf') format('truetype');
+  font-weight: 400;
+}

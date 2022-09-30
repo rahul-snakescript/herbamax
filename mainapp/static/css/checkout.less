@@ -1,0 +1,53 @@
+.page-checkout {
+  padding: 40px 0;
+
+  .table-items {
+    border-bottom: 1px dashed #d8d8d8;
+    tr:first-child td {
+      border-top: none;
+    }
+    td {
+      vertical-align: middle;
+
+      &.td-img {
+        width: 25%;
+      }
+    }
+    .pr-name {
+      margin-top: 0;
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .pr-qty {
+      font-size: 15px;
+    }
+    .pr-subtotal {
+      margin-top: 0;
+      text-align: right;
+      font-size: 18px;
+    }
+  }
+
+  .form-coupon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      flex: 0 0 auto;
+    }
+    input {
+      flex: 1 1;
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+    }
+    button {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+#diff-addr-wrapper { display: none; }
+.error { border: 1px solid #cf150c; }

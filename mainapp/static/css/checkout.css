@@ -1,0 +1,52 @@
+.page-checkout {
+  padding: 40px 0;
+}
+.page-checkout .table-items {
+  border-bottom: 1px dashed #d8d8d8;
+}
+.page-checkout .table-items tr:first-child td {
+  border-top: none;
+}
+.page-checkout .table-items td {
+  vertical-align: middle;
+}
+.page-checkout .table-items td.td-img {
+  width: 25%;
+}
+.page-checkout .table-items .pr-name {
+  margin-top: 0;
+  font-weight: bold;
+  font-size: 15px;
+}
+.page-checkout .table-items .pr-qty {
+  font-size: 15px;
+}
+.page-checkout .table-items .pr-subtotal {
+  margin-top: 0;
+  text-align: right;
+  font-size: 18px;
+}
+.page-checkout .form-coupon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.page-checkout .form-coupon label {
+  flex: 0 0 auto;
+}
+.page-checkout .form-coupon input {
+  flex: 1 1;
+  margin: 0 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+.page-checkout .form-coupon button {
+  flex: 0 0 auto;
+}
+#diff-addr-wrapper {
+  display: none;
+}
+.error {
+  border: 1px solid #cf150c;
+}

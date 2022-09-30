@@ -1,0 +1,20 @@
+<div class="blog-side">
+    <form action="">
+        <div class="form-group">
+            <label for="">Search</label>
+            <input type="text" name="q" class="input-text" value="{{ request.GET.q }}">
+        </div>
+    </form>
+    <div class="form-group">
+        <h4>CATEGORIES</h4>
+        {% for cat in cats %}
+            <p><a href="{% url 'blog_main' %}?cat={{ cat.slug }}">{{ cat.name }}</a></p>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        <h4>LATEST POSTS</h4>
+        {% for post in latest_posts %}
+            <p><a href="{% url 'blog_post' post.slug %}"><b>{{ post.title }}</b><br><span class="text-muted">{{ post.created_date }}</span></a></p>
+        {% endfor %}
+    </div>
+</div>

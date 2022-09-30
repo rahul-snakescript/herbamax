@@ -1,0 +1,113 @@
+{% extends 'mainapp/base_template.html' %}
+{% load static %}
+
+{% block template_body_block %}
+    <div class="page-product">
+        {% with object.reviews.all as reviews %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="img-grad-wr">
+                            <img src="{{ object.image.url }}" alt="">
+                        </div>
+                        <p class="npn">Health Canada License # (NPN): {{ object.npn }}</p>
+                    </div>
+                    <div class="col-sm-8">
+                        <h2 class="prod-title">{{ object.title }}</h2>
+                        <h3 class="prod-price"><s>${{ object.price|floatformat:2 }}</s>
+                            <span class="new-price">${{ object.get_total|floatformat:2 }}</span>
+                            <span class="off">({{ object.discount|floatformat }}% OFF)</span>
+                        </h3>
+                        <h3 class="prod-reviews">
+                            <a href="#" class="link-prod-reviews">
+                                <img src="{% static 'img/stars.png' %}" alt="">{{ reviews|length }} reviews
+                            </a>
+                        </h3>
+                        <div class="clearfix"></div>
+                        <hr>
+{#                        <h3 class="wci">Where Can I buy HerbaMAX?</h3>#}
+{#                        <p>These female sexual enhancement pills are made with 100 % all natural high quality#}
+{#                            ingredients to ensure superior effectiveness and quality. The aim was to create the#}
+{#                            most advanced herbal capsules to support normal sexual function in women.</p>#}
+{#                        <ul class="ul-wci">#}
+{#                            <li>Herbal Stores</li>#}
+{#                            <li>Nutrition Stores</li>#}
+{#                            <li>Organic Food Stores</li>#}
+{#                            <li>Supplement Stores</li>#}
+{#                            <li>Drug Stores</li>#}
+{#                            <li>Adult Stores</li>#}
+{#                        </ul>#}
+{#                        <br>#}
+{#                        <p>New Product! Order yours now!</p>#}
+                        <div>
+                            {% autoescape off %}
+                                {{ object.short_description }}
+                            {% endautoescape %}
+                        </div>
+
+                        <div class="qty-wr">
+                            <span>Quantity</span>
+                            <input type="number" class="product-quantity" value="1">
+                            <a href="#" data-id="{{ object.id }}" class="btn btn-red btn-add-to-cart">ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="accord">
+                    <a href="#" class="acc-link"><i class="fa fa-fw fa-plus"></i></a>
+                    <h4 class="titl">Description</h4>
+                    <div class="acc-content">
+                        {% autoescape off %}
+                            {{ object.full_description }}
+                        {% endautoescape %}
+                    </div>
+                </div>
+
+                <div class="accord">
+                    <i class="fa fa-fw fa-plus"></i>
+                    <h4 class="titl">Ingredients</h4>
+                    <div class="acc-content">
+                        {% for ingredient in object.ingredients.all %}
+                            <p class="prod-ingr"><b>{{ ingredient.name }}</b> - {{ ingredient.description }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="accord accord-reviews">
+                    <a href="#" class="acc-link"><i class="fa fa-fw fa-plus"></i></a>
+                    <h4 class="titl">Reviews ({{ reviews|length }})</h4>
+                    <div class="acc-content">
+                        {% if reviews %}
+                            {% for review in reviews|slice:":5" %}
+                                <div class="rev-box">
+                                    <img src="{% static 'img/stars.png' %}" alt="">
+                                    <p>"{{ review.text }}"</p>
+                                    <h4>- {{ review.author }}</h4>
+                                </div>
+                            {% endfor %}
+                            <div class="text-center">
+                                <a href="#">View More &raquo;</a>
+                            </div>
+                        {% else %}
+                            <h3 class="text-center text-muted">No Reviews</h3>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endwith %}
+    </div>
+{% endblock %}
+
+{% block include_js %}
+    <script>
+        $(function () {
+            if (window.location.hash == '#reviews') {
+                $('.accord-reviews').find('.fa').removeClass('fa-plus').addClass('fa-minus');
+                $('.accord-reviews').find('.acc-content').slideDown('fast');
+                scrollToDiv('.accord-reviews');
+            }
+        });
+    </script>
+{% endblock %}

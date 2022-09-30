@@ -1,0 +1,41 @@
+{% extends 'mainapp/base_template.html' %}
+{% load static %}
+{% load solo_tags %}
+{% load hm_extras %}
+
+{% block template_body_block %}
+    {% get_solo 'mainapp.SiteConfiguration' as config %}
+    <div class="page-home">
+        <div class="home-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-push-6 col-sm-8 col-sm-push-4">
+                        <h1 class="sale">SALE<sup>{{ config.banner_product.discount|floatformat }}%</sup><sub>OFF</sub></h1>
+                        <p class="under-sale">There are many variations of passages of Lorem Ipsum available,
+                            but the majority have suffered alteration in some form, by injected
+                            humour, or randomised words which don't look.</p>
+                        <a href="{% url 'product' config.banner_product.slug %}" class="btn"><img src="{% static 'img/bag.png' %}" alt=""> SHOP NOW!</a>
+                    </div>
+                    <div class="col-md-6 col-md-pull-6 col-sm-4 col-sm-pull-8">
+                        <img src="{{ config.banner_product.image.url }}" class="img-product" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="home-text">
+                <h2>Lorem Ipsum Dolor Sit <span>Amet Consectetur</span></h2>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                    alteration in some form, by injected humour, or randomised words which don't look even slightly
+                    believable. ext.</p>
+            </div>
+            <div class="products-wr">
+                {% for pr in products %}
+                    {% get_product_box pr %}
+                {% endfor %}
+            </div>
+            {% include 'mainapp/partials/free_shipping.html' %}
+        </div>
+    </div>
+{% endblock %}

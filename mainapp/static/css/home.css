@@ -1,0 +1,95 @@
+.page-home .home-banner {
+  background: url('/static/img/banner.jpg') no-repeat center bottom;
+  background-size: cover;
+  padding: 50px 0;
+}
+@media only screen and (max-width: 767px) {
+  .page-home .home-banner {
+    text-align: center;
+  }
+}
+.page-home .home-banner .sale {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 140px;
+  letter-spacing: -7px;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+}
+.page-home .home-banner .sale sup {
+  color: #c72226;
+  font-weight: 800;
+  position: absolute;
+  top: 53px;
+  right: auto;
+  font-size: 64px;
+  letter-spacing: -3px;
+}
+.page-home .home-banner .sale sub {
+  color: #c72226;
+  font-weight: 800;
+  position: absolute;
+  bottom: 48px;
+  right: auto;
+  font-size: 64px;
+  letter-spacing: -3px;
+}
+@media only screen and (max-width: 767px) {
+  .page-home .home-banner .sale {
+    font-size: 80px;
+    margin-left: -75px;
+  }
+  .page-home .home-banner .sale sup {
+    font-size: 40px;
+    top: 31px;
+    left: 170px;
+  }
+  .page-home .home-banner .sale sub {
+    font-size: 40px;
+    bottom: 26px;
+    left: 170px;
+  }
+}
+.page-home .home-banner .under-sale {
+  font-size: 19px;
+  margin: 0 0 25px;
+}
+.page-home .home-banner .btn {
+  border: 2px solid #ec5d5a;
+  border-radius: 0;
+  color: #fff;
+  background: #c72226;
+  font-size: 25px;
+  padding: 8px 35px;
+  max-width: 100%;
+}
+.page-home .home-banner .btn:hover {
+  border-color: #c72226;
+  background: #ec5d5a;
+}
+.page-home .home-banner .btn img {
+  vertical-align: baseline;
+}
+.page-home .home-banner .img-product {
+  max-width: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .page-home .home-banner .img-product {
+    margin: 30px 0 0;
+  }
+}
+.page-home .home-text {
+  text-align: center;
+  padding: 30px 0;
+}
+.page-home .home-text h2 {
+  margin: 0 0 20px;
+}
+.page-home .home-text h2 span {
+  color: #48b246;
+}
+.page-home .home-text p {
+  font-size: 17px;
+  line-height: 25px;
+}

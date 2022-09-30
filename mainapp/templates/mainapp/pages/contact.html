@@ -1,0 +1,68 @@
+{% extends 'mainapp/base_template.html' %}
+
+{% block template_body_block %}
+    <div class="page-contact">
+        <div class="container">
+            <h2>CONTACT US</h2>
+            <hr>
+            <p>Order & Shipping Status Order & Shipping Status Call to speak with one of our Customer Service
+                Representatives Monday – Friday
+                (excluding Holidays) between the hours of 9:00am to 4:00pm EST. All orders placed for products marked
+                In-Stock on or before 3:00 PM EST
+                Monday through Friday will be shipped out within 48 hours. Refunds and returns require written
+                authorization (RMA) from a representative.
+                For more information on refunds and returns, please contact us.</p>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p><b>Email:</b><br>
+                        sales@herbamax.ca</p>
+
+                    <p><b>Sales Phone Number:</b><br>
+                        1.888.885.8580</p>
+
+                    <p><b>Customer Service Phone Number:</b><br>
+                        1.888.885.8580</p>
+                    <br>
+                    <p><b>Address &amp; Location:</b><br>
+                        HerbaMAX Inc. 994 Westport Cres. Unit A-8 Mississauga Ontario <br>
+                        Canada L5T 1G1 www.herbamax.ca</p>
+                    <br>
+                    <p><b>Returns Department:</b><br>
+                        HerbaMAX Inc. 994 Westport Cres. Unit A-8 Mississauga Ontario <br>
+                        Canada L5T 1G1</p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-wr">
+                        <form action="" id="form-contact">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="">Full Name<span>*</span></label>
+                                <input type="text" class="form-control" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email Address<span>*</span></label>
+                                <input type="email" class="form-control" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Phone Number<span>*</span></label>
+                                <input type="text" class="form-control" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Message</label>
+                                <textarea name="message" id="" rows="6" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-red">Send Message</button>
+                        </form>
+                        <div class="f-message f-success">
+                            <h3>Thank you, your submission has been sent.</h3>
+                        </div>
+                        <div class="f-message f-error">
+                            <h3>Something went wrong, try refreshing and submitting the form again.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

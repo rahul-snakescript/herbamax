@@ -1,0 +1,197 @@
+{% extends 'mainapp/base_template.html' %}
+{% load static %}
+{% load hm_extras %}
+
+{% block template_body_block %}
+    <div class="page-checkout">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form id="form-checkout" action="{{ form_action_moneris }}" method="POST">
+                        <input type="hidden" name="ps_store_id" value="{{ ps_store_id }}">
+                        <input type="hidden" name="hpp_key" value="{{ hpp_key }}">
+                        <input type="hidden" name="hst" id="hst-moneris" value="{{ tax_dollars|floatformat:"2" }}">
+                        <input type="hidden" name="rvarOrder" class="order-id">
+                        <input type="hidden" name="couponCode" id="moneris-coupon-code">
+                        <input type="hidden" name="charge_total" id="charge_total"
+                               value="{{ total_and_shipping_and_tax|floatformat:"2" }}">
+                        <input type="hidden" id="id_coupon_code" name="coupon_code">
+                        <input type="hidden" name="total_and_shipping" value="{{ total_and_shipping|default:0 }}"
+                               id="tas">
+                        {#                        <input type="hidden" name="total_and_shipping_and_tax"#}
+                        {#                               value="{{ total_and_shipping_and_tax|default:0 }}" id="tasat">#}
+                        {% for item in cart.items %}
+                            <input type="hidden" name="id{{ forloop.counter }}" value="{{ item.product.id }}">
+                            <input type="hidden" name="description{{ forloop.counter }}"
+                                   value="{{ item.product.title }}">
+                            <input type="hidden" name="quantity{{ forloop.counter }}" value="{{ item.quantity }}">
+                            <input type="hidden" name="price{{ forloop.counter }}" value="{{ item.product.get_total }}">
+                            <input type="hidden" name="subtotal{{ forloop.counter }}" value="{{ item.subtotal }}">
+                        {% endfor %}
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4>Your order</h4>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table class="table table-items">
+                                        <tbody>
+                                        {% for item in cart.items %}
+                                            <tr>
+                                                <td class="td-img">
+                                                    {% if item.product.image %}
+                                                        <img class="img-responsive" src="{{ item.product.image.url }}"
+                                                             alt="">
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <h5 class="pr-name">{{ item.product.title }}</h5>
+                                                    <h5 class="pr-qty">{{ item.quantity }} x
+                                                        ${{ item.product.get_total|floatformat:2 }}</h5>
+                                                </td>
+                                                <td><h5 class="pr-subtotal">${{ item.subtotal|floatformat:2 }}</h5></td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="text-right">
+                                    <h4>Subtotal: ${{ cart.total|floatformat:"2" }}</h4>
+                                    <h4>Shipping: ${{ shipping_cost|floatformat:"2" }}</h4>
+                                    <h4>Tax
+                                        <span id="tax_perc">{{ tax_perc|floatformat }}</span>%:
+                                        $<span id="tax_doll">{{ tax_dollars|floatformat:"2" }}</span>
+                                    </h4>
+                                    <div class="form-coupon" id="form-coupon">
+                                        <label for="ccode">Coupon Code:&nbsp;</label>
+                                        <input type="text" class="form-control" id="ccode">
+                                        <button type="button" id="btn-apply-code" class="btn btn-primary">Apply code
+                                        </button>
+                                    </div>
+                                    <h4 class="text-danger text-right" id="ccode-error"></h4>
+                                    <h4 class="text-success text-right" id="ccode-success"></h4>
+                                    <h3><b>Total: $<span
+                                            id="total">{{ total_and_shipping_and_tax|floatformat:"2" }}</span></b>
+                                    </h3>
+                                    <button type="button" class="btn btn-lg btn-red" id="btn-submit">Submit</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <h4>Billing Details</h4>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="b_phone">Phone</label>
+                                    {{ form.b_phone|addclname:"form-control,bill_phone" }}
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_b_first_name">First Name</label>
+                                            {{ form.b_first_name|addclname:"form-control,bill_first_name" }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_b_last_name">Last Name</label>
+                                            {{ form.b_last_name|addclname:"form-control,bill_last_name" }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_b_country">Country</label>
+                                    {{ form.b_country|addclname:"form-control,bill_country" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_b_address">Address</label>
+                                    {{ form.b_address|addclname:"form-control,bill_address_one" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_b_city">City</label>
+                                    {{ form.b_city|addclname:"form-control,bill_city" }}
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_b_state">Province</label>
+                                            {{ form.b_state|addclname:"form-control,bill_state_or_province" }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="id_b_zip">Postal Code</label>
+                                            {{ form.b_zip|addclname:"form-control,bill_postal_code" }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_email">Email Address</label>
+                                    {{ form.email|addclname:"form-control,email" }}
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_bd_note">Order Notes (max 50 characters)</label>
+                                    <textarea id="id_bd_note" class="form-control" name="note" rows="2"
+                                              maxlength="50"></textarea>
+                                </div>
+                                {#                    <button class="btn btn-default">SUBMIT</button>#}
+                            </div>
+                            <div class="col-sm-4">
+                                <h4><label for="check-ship-to-diff" style="font-weight:400;margin:0;">Ship to a different address?</label> <input type="checkbox" id="check-ship-to-diff"></h4>
+                                <hr>
+                                <div id="diff-addr-wrapper">
+                                    <div class="form-group">
+                                        <label for="id_s_phone">Phone</label>
+                                        {{ form.s_phone|addclname:"form-control,ship_phone" }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="id_s_first_name">First Name</label>
+                                                {{ form.s_first_name|addclname:"form-control,ship_first_name" }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="id_s_last_name">Last Name</label>
+                                                {{ form.s_last_name|addclname:"form-control,ship_last_name" }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_s_country">Country</label>
+                                        {{ form.s_country|addclname:"form-control,ship_country" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_s_address">Address</label>
+                                        {{ form.s_address|addclname:"form-control,ship_address_one" }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_s_city">City</label>
+                                        {{ form.s_city|addclname:"form-control,ship_city" }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="id_s_state">Province</label>
+                                                {{ form.s_state|addclname:"form-control,ship_state_or_province" }}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="id_s_zip">Postal Code</label>
+                                                {{ form.s_zip|addclname:"form-control,ship_postal_code" }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block include_js %}
+    <script src="{% static 'js/checkout.js' %}"></script>
+{% endblock %}

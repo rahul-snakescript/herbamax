@@ -1,0 +1,35 @@
+#btn-om {
+  display: none;
+  color: #fff;
+  background: #003982;
+  border: 1px solid #fff;
+}
+@media only screen and (max-width: 767px) {
+  #nav-desktop {
+    padding: 15px 0;
+  }
+  #nav-desktop #btn-om {
+    display: inline-block;
+  }
+  #nav-desktop ul {
+    display: none;
+    margin: 0;
+    padding: 10px 0;
+    list-style-type: none;
+  }
+  #nav-desktop ul li {
+    padding: 5px;
+  }
+  #nav-desktop ul li a {
+    color: #000;
+    font-size: 16px;
+    text-decoration: none !important;
+    vertical-align: -7px;
+  }
+  #nav-desktop ul li a.nav-plus {
+    float: right;
+    text-decoration: none;
+    border: 1px solid #8e8e8e;
+    padding: 4px 10px;
+  }
+}

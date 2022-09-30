@@ -1,0 +1,17 @@
+{% extends 'mainapp/base_template.html' %}
+{% load hm_extras %}
+
+{% block template_body_block %}
+    <div class="page-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                {% block blog_block %}{% endblock %}
+            </div>
+            <div class="col-sm-4">
+                {% get_blog_sidebar %}
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

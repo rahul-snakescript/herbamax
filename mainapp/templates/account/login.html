@@ -1,0 +1,39 @@
+{% extends 'mainapp/base_template.html' %}
+
+{% block head_title %}Login - HerbaMAX{% endblock %}
+
+{% block template_body_block %}
+    <div class="page-account">
+        <div class="container">
+            <div class="acc-box">
+                <form class="" method="POST" action="{% url 'account_login' %}">
+                    <h2>Login</h2>
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="form-group {% if form.email.errors or form.login.errors %}has-error{% endif %}">
+                        <label for="id_login">Email</label>
+                        <input autofocus="autofocus" class="input-text" id="id_login" name="login" type="email"
+                               required>
+                        {{ form.email.errors }}
+                        {{ form.login.errors }}
+                    </div>
+                    <div class="form-group {% if form.password.errors %}has-error{% endif %}">
+                        <label for="id_password">Password</label>
+                        <input class="input-text" id="id_password" name="password" type="password"
+                               required>
+                        {{ form.password.errors }}
+                    </div>
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <button class="btn btn-submit" type="submit">Login</button>
+                    <div class="pa-wr">
+                        <a class="pa-link-left" href="{% url 'account_reset_password' %}">Forgot Password?</a>
+                        <a class="pa-link-right" href="{% url 'account_signup' %}">Don't have an account? Sign Up</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+.page-blog {
+  padding: 40px 0;
+}
+.page-blog .post-box {
+  border: 1px solid #b2c6cd;
+  margin: 0 0 20px;
+}
+.page-blog .post-box img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  max-width: 100%;
+}
+.page-blog .post-box .wr {
+  padding: 15px;
+}
+.page-blog .post-box .wr h3 {
+  margin: 0 0 15px;
+  font-weight: 600;
+}
+.page-blog .blog-side form {
+  margin-top: 8px;
+}
+.page-blog .blog-side form .input-text {
+  display: block;
+  width: 100%;
+  border: 1px solid #bbccd3;
+  height: 50px;
+  border-radius: 30px;
+  outline: none !important;
+  font-size: 18px;
+  padding: 0 45px 0 20px;
+  background: url('/static/img/zoom2.png') no-repeat calc(100% - 15px) center;
+}
+.page-blog .blog-side form label {
+  position: absolute;
+  left: 25px;
+  top: -13px;
+  background: #fff;
+  padding: 0 5px;
+  font-weight: 400;
+  font-size: 18px;
+}
+.page-blog .blog-side .form-group {
+  margin: 0 0 25px;
+  position: relative;
+}
+.page-blog .blog-side h4 {
+  font-weight: 600;
+  margin: 0 0 15px;
+}
+.page-blog .blog-side a {
+  color: #000;
+  font-size: 16px;
+}
+.page-blog .blog-post img {
+  max-width: 100%;
+}
+.page-blog .blog-post .date {
+  color: #3e66b1;
+  font-size: 14px;
+}
+.page-blog .blog-post .body-wr {
+  overflow: hidden;
+}
+.page-blog .blog-post .body-wr img {
+  max-width: 100%;
+}

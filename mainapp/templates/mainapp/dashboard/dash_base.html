@@ -1,0 +1,29 @@
+{% extends 'mainapp/base_template.html' %}
+
+{% block template_body_block %}
+    <div class="page-dashboard">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 col-lg-2">
+                    <ul class="dash-sidebar">
+                        <li class="{% if request.resolver_match.url_name == 'dash_index' %}active{% endif %}">
+                            <a href="{% url 'dash_index' %}">DASHBOARD</a>
+                        </li>
+                        <li class="{% if request.resolver_match.url_name == 'dash_orders' %}active{% endif %}">
+                            <a href="{% url 'dash_orders' %}">ORDERS</a>
+                        </li>
+                        <li class="{% if request.resolver_match.url_name == 'dash_addresses' %}active{% endif %}">
+                            <a href="{% url 'dash_addresses' %}">ADDRESS</a>
+                        </li>
+                        <li class="{% if request.resolver_match.url_name == 'dash_password' %}active{% endif %}">
+                            <a href="{% url 'dash_password' %}">CHANGE PASSWORD</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-8 col-md-9 col-lg-10">
+                    {% block dash_body %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

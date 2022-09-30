@@ -1,0 +1,14 @@
+{% extends 'mainapp/base_template.html' %}
+
+{% block template_body_block %}
+    <div class="page-process-payment">
+        <div class="container">
+            {% if error %}
+                <h1 class="text-center text-danger">Something Went Wrong</h1>
+            {% else %}
+                <h1 class="text-center text-success">Thank You For Your Order.<br>Your Payment Is Being Processed.</h1>
+                <h3 class="text-center text-muted">Your Order ID: <b>5000-{{ order_id }}</b></h3>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

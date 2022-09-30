@@ -1,0 +1,20 @@
+{% extends 'mainapp/base_template.html' %}
+{% load hm_extras %}
+
+{% block template_body_block %}
+    <div class="page-products">
+        <div class="container">
+            <h2 class="op-title">Our Products</h2>
+            {% if object_list %}
+                <div class="products-wr">
+                    {% for pr in object_list %}
+                        {% get_product_box pr %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h2 class="text-center text-muted">No Products Found</h2>
+            {% endif %}
+            {% include 'mainapp/partials/free_shipping.html' %}
+        </div>
+    </div>
+{% endblock %}

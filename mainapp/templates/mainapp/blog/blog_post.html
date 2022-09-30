@@ -1,0 +1,16 @@
+{% extends 'mainapp/blog/blog_base.html' %}
+
+{% block blog_block %}
+    <div class="blog-post">
+        {% if object.featured_image %}
+            <img src="{{ object.featured_image.url }}" alt="">
+        {% endif %}
+    <h2>{{ object.title }}</h2>
+    <p class="date">{{ object.created_date|date }}</p>
+    <div class="body-wr">
+        {% autoescape off %}
+            {{ object.body }}
+        {% endautoescape %}
+    </div>
+    </div>
+{% endblock %}

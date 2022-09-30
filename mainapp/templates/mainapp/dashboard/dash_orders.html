@@ -1,0 +1,72 @@
+{% extends 'mainapp/dashboard/dash_base.html' %}
+{% load hm_extras %}
+
+{% block head_title %}Orders - HerbaMAX{% endblock %}
+
+{% block dash_body %}
+    <h2 class="dash-header">Orders</h2>
+    <hr>
+    {% if object_list %}
+        <div class="table-responsive">
+            <table class="table table-orders table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Item(s)</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Shipping</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in object_list %}
+                    {% with order.get_products_json as products_json %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ order.created_date|date:'m/d/Y H:i' }}</td>
+                            <td>
+                                <table>
+                                    {% for pr in products_json %}
+                                        <tr>
+                                            <td>{{ pr.description }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    {% for pr in products_json %}
+                                        <tr>
+                                            <td>${{ pr.price|floatformat:2 }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </td>
+                            <td>
+                                <table>
+                                    {% for pr in products_json %}
+                                        <tr>
+                                            <td>{{ pr.qty }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </td>
+                            <td>${{ order.shipping_cost|floatformat:2 }}</td>
+                            <td><b>${{ order.total|floatformat:2 }}</b></td>
+                            <td class="td-paid"><i
+                                    class="fa {% if order.paid %}fa-check-circle{% else %}fa-times-circle{% endif %}"
+                                    aria-hidden="true"></i>
+                            </td>
+                        </tr>
+                    {% endwith %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <h3>You don't have any orders yet</h3>
+    {% endif %}
+{% endblock %}

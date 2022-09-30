@@ -1,0 +1,49 @@
+.page-dashboard {
+  padding: 40px 0;
+
+  .dash-sidebar {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-weight: 600;
+
+    li {
+      padding: 5px 0;
+      &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+      }
+      &.active a {
+        color: #7fb726;
+      }
+      a {
+        color: #000;
+        display: block;
+        font-size: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+  .dash-header { margin: 0 0 15px; }
+  ul.errorlist {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: #f44336;
+  }
+
+  .table-orders {
+    font-size: 16px;
+    td {
+      vertical-align: middle;
+      &.td-paid {
+        text-align: center;
+        .fa {
+          font-size: 22px;
+
+          &.fa-check-circle{ color: #8bc34a; }
+          &.fa-times-circle{ color: #f44336; }
+        }
+      }
+    }
+  }
+}

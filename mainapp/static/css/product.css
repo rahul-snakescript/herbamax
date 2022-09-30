@@ -1,0 +1,116 @@
+.page-product {
+  padding: 40px 0;
+}
+.page-product .img-grad-wr {
+  padding: 15px;
+  margin: 0 0 15px;
+}
+.page-product .npn {
+  color: #5c5c5c;
+  text-align: center;
+}
+.page-product .prod-title {
+  font-weight: 600;
+}
+.page-product .prod-price {
+  float: left;
+}
+.page-product .prod-price .new-price {
+  color: #31508b;
+  font-weight: bold;
+  margin: 0 10px;
+}
+.page-product .prod-price .off {
+  color: #242424;
+  font-weight: 300;
+}
+.page-product .qty-wr {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+.page-product .qty-wr span {
+  font-size: 16px;
+}
+.page-product .qty-wr input {
+  border: 1px solid #a3a3a3;
+  height: 40px;
+  width: 50px;
+  margin: 0 13px;
+  padding: 0 3px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.page-product .qty-wr .btn-red {
+  height: 40px;
+  font-size: 18px;
+}
+.page-product .prod-reviews {
+  float: right;
+  font-size: 18px;
+}
+.page-product .prod-reviews a {
+  color: #242424;
+}
+.page-product .prod-reviews img {
+  vertical-align: -4px;
+  margin-right: 8px;
+}
+.page-product .wci {
+  color: #d43a38;
+  font-weight: 400;
+  margin: 0 0 15px;
+  font-size: 19px;
+}
+.page-product .ul-wci {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.page-product .ul-wci li {
+  background: url('/static/img/bullet.png') no-repeat left center;
+  padding: 2px 0 2px 25px;
+  font-weight: 600;
+}
+.page-product .accord {
+  border: 1px solid #b0b0b0;
+  padding: 15px 20px;
+  position: relative;
+  margin: 0 0 15px;
+  cursor: pointer;
+}
+.page-product .accord .titl {
+  margin: 0;
+  font-weight: bold;
+}
+.page-product .accord .fa {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: #000;
+}
+.page-product .accord .acc-content {
+  display: none;
+  margin-top: 15px;
+}
+.page-product .rev-box {
+  border-bottom: 1px solid #d7d7d7;
+  margin: 0 0 20px;
+  padding: 0 0 20px;
+}
+.page-product .rev-box p {
+  color: #4c4c4c;
+  margin: 20px 0;
+  font-size: 16px;
+}
+.page-product .rev-box h4 {
+  font-weight: bold;
+  margin: 0;
+}
+.page-product .prod-ingr {
+  color: #4c4c4c;
+}
+.page-product .prod-ingr b {
+  color: #000;
+}

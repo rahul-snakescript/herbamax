@@ -1,0 +1,51 @@
+.page-dashboard {
+  padding: 40px 0;
+}
+.page-dashboard .dash-sidebar {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-weight: 600;
+}
+.page-dashboard .dash-sidebar li {
+  padding: 5px 0;
+}
+.page-dashboard .dash-sidebar li:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+.page-dashboard .dash-sidebar li.active a {
+  color: #7fb726;
+}
+.page-dashboard .dash-sidebar li a {
+  color: #000;
+  display: block;
+  font-size: 16px;
+  text-decoration: none;
+}
+.page-dashboard .dash-header {
+  margin: 0 0 15px;
+}
+.page-dashboard ul.errorlist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: #f44336;
+}
+.page-dashboard .table-orders {
+  font-size: 16px;
+}
+.page-dashboard .table-orders td {
+  vertical-align: middle;
+}
+.page-dashboard .table-orders td.td-paid {
+  text-align: center;
+}
+.page-dashboard .table-orders td.td-paid .fa {
+  font-size: 22px;
+}
+.page-dashboard .table-orders td.td-paid .fa.fa-check-circle {
+  color: #8bc34a;
+}
+.page-dashboard .table-orders td.td-paid .fa.fa-times-circle {
+  color: #f44336;
+}
