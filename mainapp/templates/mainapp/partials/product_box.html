@@ -5,7 +5,12 @@
             <img src="{{ pr.image.url }}" alt="">
         </a>
     </div>
-    <h4 class="title"><a href="{% url 'product' pr.slug %}">{{ pr.title }}</a></h4>
+    <h4 class="title">
+        <a href="{% url 'product' pr.slug %}">
+            {{ pr.title }}
+
+        </a>
+    </h4>
     <p class="descr">It is a long established fact that a reader will be
         distracted by the readable content of a page
         when looking at its layout</p>
@@ -14,6 +19,7 @@
             class="new-price">${{ pr.get_total|floatformat:2 }}</span> <span
             class="off">({{ pr.discount|floatformat }}% OFF)</span></h4>
     <span class="stars"><img src="{% static 'img/stars.png' %}" alt="">
-                            <a href="{% url 'product' pr.slug %}#reviews">{{ pr.reviews.all|length }} Reviews</a></span>
+                            <a href="{% url 'product' pr.slug %}
+                            #reviews">{{ pr.reviews.all|length }} Reviews</a></span>
     <a href="#" data-id="{{ pr.id }}" class="btn btn-red btn-add-to-cart">ADD TO CART</a>
 </div>

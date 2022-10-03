@@ -10,9 +10,9 @@ from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from carton.cart import Cart
 from allauth.account.views import PasswordChangeView
-from models import Product, HmUser, SiteConfiguration, CouponCode, Order
-from forms import CheckoutForm
-from functions import get_tax_for_province
+from .models import Product, HmUser, SiteConfiguration, CouponCode, Order
+from .forms import CheckoutForm
+from .functions import get_tax_for_province
 
 
 class HomeView(TemplateView):
@@ -340,5 +340,4 @@ def ajax_create_order(request):
             order.save()  # Save order. We need an ID
         return JsonResponse({'error': 0, 'message': 'Order created successfully.', 'order_id': order.id})
     except Exception as e:
-        print e
         return JsonResponse({'error': 1, 'message': 'Err creating order.'})

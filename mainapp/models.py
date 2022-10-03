@@ -13,7 +13,7 @@ from redactor.fields import RedactorField
 from solo.models import SingletonModel
 from mptt.models import MPTTModel, TreeForeignKey
 from mainapp.functions import upload_product_images_to
-from functions import unique_slugify
+from .functions import unique_slugify
 
 
 '''

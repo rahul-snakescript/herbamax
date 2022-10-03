@@ -58,6 +58,7 @@ urlpatterns = [
     url(r'^cart/$', cart, name='cart'),
     url(r'^checkout/$', checkout, name='checkout'),
     url(r'^product/(?P<slug>[-\w]+)/$', ProductView.as_view(), name='product'),
+    # url('product/<slug:slug>/', ProductView.as_view(), name='product'),
     url(r'^products/$', ProductsView.as_view(), name='products'),
     url(r'^contact/$', ContactView.as_view(), name='contact'),
 

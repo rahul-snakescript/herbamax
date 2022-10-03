@@ -23,7 +23,7 @@ class IngredientInline(GenericTabularInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    exclude = 'slug', 'created_date', 'url'
+    exclude = 'created_date', 'url'
     inlines = [ReviewInline, IngredientInline]
 
 
